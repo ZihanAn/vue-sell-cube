@@ -1,4 +1,9 @@
+const path = require('path')
 const data = require('./data.json')
+
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
 
 module.exports = {
   css: {
@@ -38,5 +43,10 @@ module.exports = {
         })
       })
     }
+  },
+  chainWebpack: (config) => {
+    config.resolve.alias
+      .set('common', resolve('src/common'))
+      .set('components', resolve('src/components'))
   }
 }
