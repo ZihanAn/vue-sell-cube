@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <v-header :seller="seller"></v-header>
+    <header-detail :seller="seller"></header-detail>
   </div>
 </template>
 
 <script>
 import VHeader from './components/v-header/v-header.vue'
+import HeaderDetail from './components/header-detail/header-detail.vue'
 import { getSeller } from './api'
 
 export default {
@@ -16,7 +18,8 @@ export default {
     }
   },
   components: {
-    VHeader
+    VHeader,
+    HeaderDetail
   },
   created() {
     // 获取商家信息
