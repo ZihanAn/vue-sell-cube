@@ -1,16 +1,36 @@
 <template>
   <div id="app">
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
   </div>
 </template>
 
 <script>
 import VHeader from './components/v-header/v-header.vue'
+import { getSeller } from './api'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      seller: {}
+    }
+  },
   components: {
     VHeader
+  },
+  created() {
+    // 获取商家信息
+    this._getSeller()
+  },
+  mounted() {
+  },
+  methods: {
+    _getSeller() {
+      // 因为对axios做了封装，封装里面已经对值做了判断，所以这里面就不用判断errno的值了，肯定就是0
+      getSeller().then(seller => {
+        this.seller = seller
+      })
+    }
   }
 }
 </script>
