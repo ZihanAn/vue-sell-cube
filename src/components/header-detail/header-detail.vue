@@ -49,10 +49,11 @@
         default() {
           return {}
         }
-      },
-      visible: {
-        type: Boolean,
-        default: false
+      }
+    },
+    data() {
+      return {
+        visible: false
       }
     },
     components: {
@@ -60,7 +61,12 @@
       Star
     },
     methods: {
-      hide() {}
+      show() {
+        this.visible = true
+      },
+      hide() {
+        this.visible = false
+      }
     }
   }
 </script>
